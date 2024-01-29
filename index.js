@@ -3,11 +3,16 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = express();
+const cors = require("cors");
 
-// internal imports
 const port = process.env.PORT || 4000;
 dotenv.config();
+
+app.use(cors());
 app.use(express.json());
+
+// internal imports
+const hotelRouter = require("./router/hotelRouter");
 
 // database connection
 mongoose
@@ -16,11 +21,16 @@ mongoose
     console.log("db connection successful");
   })
   .catch((err) => console.log(err));
+
 //handle errors after initial connection was established
 mongoose.connection.on("error", (err) => {
   logError(err);
 });
 
+// router setup
+app.use("/hotel", hotelRouter);
+
+// port
 app.listen(port, () => {
   console.log(`Connected To Hotel Booking in ${port}`);
 });
