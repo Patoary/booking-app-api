@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const hotelSchema = mongoose.Schema({
+const hotelSchema = mongoose.Schema(
+  {
   name: {
     type: String,
     require: true,
@@ -49,6 +50,10 @@ const hotelSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-});
+ },
+ {
+  timestamps: true,
+ }
+);
 
 module.exports = mongoose.model("Hotel", hotelSchema);
