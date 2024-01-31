@@ -13,6 +13,7 @@ app.use(express.json());
 
 // internal imports
 const hotelRouter = require("./router/hotelRouter");
+const authRouter = require("./router/authRouter");
 
 // database connection
 mongoose
@@ -29,6 +30,7 @@ mongoose.connection.on("error", (err) => {
 
 // router setup
 app.use("/hotel", hotelRouter);
+app.use("/auth", authRouter);
 
 // port
 app.listen(port, () => {
