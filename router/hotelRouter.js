@@ -3,7 +3,13 @@ const express = require("express");
 const router = express.Router();
 
 // internal imports
-const { createHotel, updateHotel, deleteHotel, getHotel, getHotels } = require("../controllers/hotelController");
+const {
+  createHotel,
+  updateHotel,
+  deleteHotel,
+  getHotel,
+  getHotels,
+} = require("../controllers/hotelController");
 
 // create
 router.post("/", createHotel);
@@ -15,4 +21,5 @@ router.delete("/:id", deleteHotel);
 router.get("/:id", getHotel);
 // get all
 router.get("/", getHotels);
+
 module.exports = router;
