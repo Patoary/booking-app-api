@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 // internal imports
 const User = require("../models/People");
 const createError = require("http-errors");
-
+// registration process
 const register = async (req, res, next) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -17,6 +17,8 @@ const register = async (req, res, next) => {
     next(err);
   }
 };
+
+// login process
 const login = async (req, res, next) => {
   try {
     // find a user defend on username
