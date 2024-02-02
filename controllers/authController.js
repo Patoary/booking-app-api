@@ -17,24 +17,24 @@ const register = async (req, res, next) => {
     next(err);
   }
 };
-// const login = async (req, res, next) => {
-//   try {
-//     // find a user defend on username
-//     const user = await User.findOne({ userName: req.body.username });
-//     if (!user) throw createError("Login failed! Please try again");
-//     const isPasswordCorrect = await bcrypt.compare(
-//       req.body.password,
-//       user.password
-//     );
-//     if (!isPasswordCorrect) throw createError("Login failed! Please try again");
+const login = async (req, res, next) => {
+  try {
+    // find a user defend on username
+    const user = await User.findOne({ userName: req.body.userName });
+    if (!user) throw createError("Login failed! Please try again");
+    const isPasswordCorrect = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!isPasswordCorrect) throw createError("Login failed! Please try again");
 
-//     res.status(200).send(user);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+    res.status(200).send(user);
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports = {
   register,
-  //   login,
+  login,
 };

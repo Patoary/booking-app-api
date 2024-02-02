@@ -14,6 +14,7 @@ app.use(express.json());
 // internal imports
 const hotelRouter = require("./router/hotelRouter");
 const authRouter = require("./router/authRouter");
+const { errorHandler } = require("./middlewares/common/errorHandler");
 
 // database connection
 mongoose
@@ -31,7 +32,10 @@ mongoose.connection.on("error", (err) => {
 // router setup
 app.use("/hotel", hotelRouter);
 app.use("/auth", authRouter);
+//error handling
 
+//common error handler
+app.use(errorHandler);
 // port
 app.listen(port, () => {
   console.log(`Connected To Hotel Booking in ${port}`);
