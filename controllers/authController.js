@@ -39,7 +39,6 @@ const login = async (req, res, next) => {
         expiresIn: process.env.JWT_SECRET_EXPIRY,
       }
     );
-    //set coolie for batter security
 
     // separate user info and don't send in client side
     const { password, isAdmin, mobile, ...otherDetails } = user._doc;

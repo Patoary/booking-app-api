@@ -9,14 +9,18 @@ const {
   getUser,
   getUsers,
 } = require("../controllers/userController");
+const {
+  verifyUser,
+  verifyAdmin,
+} = require("../middlewares/common/verifyToken");
 
 // update
-router.put("/:id", updateUser);
+router.put("/:id", verifyUser, updateUser);
 // delete
-router.delete("/:id", deleteUser);
+router.delete("/:id", verifyUser, deleteUser);
 // get
-router.get("/:id", getUser);
+router.get("/:id", verifyUser, getUser);
 // get all
-router.get("/", getUsers);
+router.get("/", verifyAdmin, getUsers);
 
 module.exports = router;

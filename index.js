@@ -12,6 +12,7 @@ dotenv.config();
 // internal imports
 const hotelRouter = require("./router/hotelRouter");
 const authRouter = require("./router/authRouter");
+const usersRouter = require("./router/usersRouter");
 const { errorHandler } = require("./middlewares/common/errorHandler");
 
 // database connection
@@ -42,6 +43,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 // router setup
 app.use("/hotel", hotelRouter);
 app.use("/auth", authRouter);
+app.use("/users", usersRouter);
 //error handling
 
 //common error handler
