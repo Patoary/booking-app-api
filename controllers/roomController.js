@@ -40,8 +40,10 @@ const updateRoom = async (req, res, next) => {
 // deleteRoom
 const deleteRoom = async (req, res, next) => {
   const hotelId = req.params.hotelId;
+  // delete a room
   try {
-    const Room = await Room.findOneAndDelete(req.params.id);
+    await Room.findByIdAndDelete(req.params.id);
+    // delete/update the room id into the Hotel→rooms
     try {
       await Hotel.findByIdAndUpdate(hotelId, {
         $pull: { rooms: req.params.id },
