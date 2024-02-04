@@ -13,6 +13,7 @@ dotenv.config();
 const hotelRouter = require("./router/hotelRouter");
 const authRouter = require("./router/authRouter");
 const usersRouter = require("./router/usersRouter");
+const roomsRouter = require("./router/roomsRouter");
 const { errorHandler } = require("./middlewares/common/errorHandler");
 
 // database connection
@@ -44,6 +45,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use("/hotel", hotelRouter);
 app.use("/auth", authRouter);
 app.use("/users", usersRouter);
+app.use("/rooms", roomsRouter);
 //error handling
 
 //common error handler
