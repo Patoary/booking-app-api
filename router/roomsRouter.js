@@ -11,11 +11,14 @@ const {
   deleteRoom,
   getRoom,
   getRooms,
+  updateRoomAvailability,
 } = require("../controllers/roomController");
 // create
 router.post("/:hotelId", verifyAdmin, createRoom);
 // update
 router.put("/:id", verifyAdmin, updateRoom);
+//update Room Availability
+router.put("availability/:id", updateRoomAvailability);
 // delete
 router.delete("/:id/:hotelId", verifyAdmin, deleteRoom);
 // get
